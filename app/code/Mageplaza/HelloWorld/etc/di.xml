@@ -15,4 +15,7 @@
         </arguments>
     </virtualType>
 
+    <type name="Mageplaza\HelloWorld\Controller\Index\Example">
+        <plugin name="Mageplaza_HelloWorld_Plugin" type="Mageplaza\HelloWorld\Plugin\ExamplePlugin" sortOrder="10" disabled="false"  />
+    </type>
 </config>
