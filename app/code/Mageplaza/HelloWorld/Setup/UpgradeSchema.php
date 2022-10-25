@@ -14,7 +14,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         // Prepares database before install/upgrade
         $installer->startSetup();
 
-        if(version_compare($context->getVersion(), '1.1.0', '<')) {
+        if(version_compare($context->getVersion(), '1.2.1', '<')) {
 
             if (!$installer->tableExists('mageplaza_helloworld_post')) {
 
