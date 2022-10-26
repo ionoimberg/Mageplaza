@@ -1,14 +1,14 @@
 <?php
 namespace Mageplaza\HelloWorld\Setup;
 
-use Magento\Eav\Setup\EavSetup;
-use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Eav\Setup\EavSetupFactory;
 
 class InstallData implements InstallDataInterface
 {
+
     private $eavSetupFactory;
 
     public function __construct(EavSetupFactory $eavSetupFactory)
@@ -16,32 +16,29 @@ class InstallData implements InstallDataInterface
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
-    public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    public function install(
+        ModuleDataSetupInterface $setup,
+        ModuleContextInterface $context
+    )
     {
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
-            'sample_attribute',
+            \Magento\Catalog\Model\Category::ENTITY,
+            'mp_new_attribute',
             [
-                'type' => 'text',
-                'backend' => '',
-                'frontend' => '',
-                'label' => 'Sample Attribute',
-                'input' => 'text',
-                'class' => '',
-                'source' => '',
-                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
-                'visible' => true,
-                'required' => true,
+                'type'         => 'varchar',
+                'label'        => 'Mageplaza Attribute',
+                'input'        => 'text',
+                'sort_order'   => 100,
+                'source'       => '',
+                'global'       => 1,
+                'visible'      => true,
+                'required'     => false,
                 'user_defined' => false,
-                'default' => '',
-                'searchable' => false,
-                'filterable' => false,
-                'comparable' => false,
-                'visible_on_front' => false,
-                'used_in_product_listing' => true,
-                'unique' => false,
-                'apply_to' => ''
+                'default'      => null,
+                'group'        => '',
+                'backend'      => ''
             ]
         );
     }
