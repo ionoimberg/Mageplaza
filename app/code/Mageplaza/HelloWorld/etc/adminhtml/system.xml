@@ -30,5 +30,47 @@
 
             </group>
         </section>
+
+        <tab id="example_tab" translate="label" sortOrder="1000">
+            <label>Example tab config</label>
+        </tab>
+        <section id="example_section" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Example config section</label>
+            <tab>example_tab</tab>
+            <resource>Mageplaza_HelloWorld::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+
+                <field id="dropdown_example" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dropdown with custom source model example</label>
+                    <source_model>Mageplaza\HelloWorld\Model\Config\Source\Custom</source_model>
+                </field>
+
+                <field id="text_example" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text example</label>
+                </field>
+
+                <field id="logo" translate="label" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image example (with a comment)</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">logo</upload_dir>
+                    <base_url type="media" scope_info="1">logo</base_url>
+                    <comment><![CDATA[Allowed file types: jpeg, gif, png.]]></comment>
+                </field>
+
+                <field id="depends_example" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dependant text field example with validation</label>
+                    <depends>
+                        <field id="*/*/dropdown_example">1</field>
+                    </depends>
+                    <validate>validate-no-empty</validate>
+                </field>
+
+                <field id="textarea_example" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Textarea example</label>
+                </field>
+
+            </group>
+        </section>
     </system>
 </config>
